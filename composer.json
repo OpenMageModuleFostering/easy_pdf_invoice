@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Easy_PDF_Invoice",
+    "type": "magento-module",
+    "license": "OSL-V3.0",
+    "homepage": "",
+    "description": "PDF generator for magento",
+    "authors": [
+    {
+        "name": "Easy PDF Invoice",
+        "email": "easypdfinvoice@gmail.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
