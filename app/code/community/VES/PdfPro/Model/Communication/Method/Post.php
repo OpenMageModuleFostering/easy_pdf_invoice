@@ -2,7 +2,7 @@
 
 class VES_PdfPro_Model_Communication_Method_Post extends VES_PdfPro_Model_Communication_Method_Abstract
 {
-	const SERVER_URL ='http://158.69.244.136/easypdfinvoice/index.php/pdf/process';
+	const SERVER_URL ='http://www.easypdfinvoice.com/index.php/pdf/process';
 	
 	public function process($data = array(),$type='invoice',$pdfPro){
 		$params = array(

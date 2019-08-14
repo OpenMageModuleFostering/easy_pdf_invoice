@@ -94,7 +94,7 @@ class VES_PdfPro_Model_Observer
 						'label'=> 'Easy PDF - '.Mage::helper('pdfpro')->__('Print All'),
 						'url'  => Mage::helper('adminhtml')->getUrl('adminhtml/pdfpro_print/all'),
 				));
-				
+				/*
     			$customPrintouts = Mage::getStoreConfig('pdfpro/custom');	    		
 				foreach($customPrintouts as $printout=>$title){
 					$block->addItem('easypdf-print-'.$printout, array(
@@ -102,7 +102,7 @@ class VES_PdfPro_Model_Observer
 						'url'  => Mage::helper('adminhtml')->getUrl('adminhtml/pdfpro_print/custom',array('type'=>$printout)),
 					));
 				}
-				
+				*/
 				$block->addItem('print_shipping_label', array(
 		             'label'=> Mage::helper('sales')->__('Print Shipping Labels'),
 		             'url'  => Mage::helper('adminhtml')->getUrl('adminhtml/sales_order_shipment/massPrintShippingLabel'),
