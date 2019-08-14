@@ -77,10 +77,10 @@ class PdfPro
     {
     	return array(
     			'major'     => '1',
-    			'minor'     => '2',
-    			'revision'  => '0',
-    			'patch'     => '2',
-    			'stability' => '18',
+    			'minor'     => '3',
+    			'revision'  => '1',
+    			'patch'     => '',
+    			'stability' => '',
     			'number'    => '',
     	);
     }

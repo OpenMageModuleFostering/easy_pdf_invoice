@@ -70,7 +70,7 @@ class VES_PdfPro_Helper_Data extends Mage_Core_Helper_Abstract
 		;
 		
 		$apiKey 	= $keyCollection->count()?$keyCollection->getFirstItem()->getApiKey():$this->getDefaultApiKey();
-		$apiKeyObj 	= new Varien_Object(array('api_key'=>$apiKey));
+		$apiKeyObj 	= new Varien_Object(array('api_key'=>$apiKey,'store_id'=>$storeId,'group_id'=>$groupId));
 		Mage::dispatchEvent('ves_pdfpro_apikey_prepare',array('obj'=>$apiKeyObj));
 		$apiKey 	= $apiKeyObj->getApiKey();
 		return $apiKey;

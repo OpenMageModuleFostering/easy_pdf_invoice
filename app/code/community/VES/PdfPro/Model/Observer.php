@@ -94,6 +94,15 @@ class VES_PdfPro_Model_Observer
 						'label'=> 'Easy PDF - '.Mage::helper('pdfpro')->__('Print All'),
 						'url'  => Mage::helper('adminhtml')->getUrl('adminhtml/pdfpro_print/all'),
 				));
+				
+    			$customPrintouts = Mage::getStoreConfig('pdfpro/custom');	    		
+				foreach($customPrintouts as $printout=>$title){
+					$block->addItem('easypdf-print-'.$printout, array(
+						'label'=> 'Easy PDF - '.$title,
+						'url'  => Mage::helper('adminhtml')->getUrl('adminhtml/pdfpro_print/custom',array('type'=>$printout)),
+					));
+				}
+				
 				$block->addItem('print_shipping_label', array(
 		             'label'=> Mage::helper('sales')->__('Print Shipping Labels'),
 		             'url'  => Mage::helper('adminhtml')->getUrl('adminhtml/sales_order_shipment/massPrintShippingLabel'),
@@ -112,6 +121,7 @@ class VES_PdfPro_Model_Observer
 						'url'  => Mage::helper('adminhtml')->getUrl('*/sales_order/deleteorder'),
 					));
 	    		}
+	    		
     	}else if($block instanceof Mage_Adminhtml_Block_Widget_Grid_Massaction_Abstract && ($block->getRequest()->getControllerName() == 'sales_invoice' || $block->getRequest()->getControllerName() == 'sales_order_invoice')){
     		$block->removeItem('pdfinvoices_order');
     	}else if($block instanceof Mage_Adminhtml_Block_Widget_Grid_Massaction_Abstract && ($block->getRequest()->getControllerName() == 'sales_shipment' || $block->getRequest()->getControllerName() == 'sales_order_shipment')){
@@ -279,7 +289,9 @@ class VES_PdfPro_Model_Observer
 				$itemData->setData('tax_amount',Mage::helper('pdfpro')->currency($item->getData('tax_amount'),$orderCurrencyCode));
 				$itemData->setData('discount_percent',$orderItem->getData('discount_percent'));
 				$itemData->setData('discount_rates',$orderItem->getData('discount_percent'));
-			
+				$itemData->setData('row_total_incl_discount',Mage::helper('pdfpro')->currency($item->getData('row_total_incl_tax') - $orderItem->getData('discount_amount')));
+				$itemData->setData('row_total_incl_discount_excl_tax',Mage::helper('pdfpro')->currency($item->getData('row_total') - $orderItem->getData('discount_amount')));
+				
 	    		$itemData->setData('base_cost',Mage::helper('pdfpro')->currency($item->getData('base_cost'),$baseCurrencyCode));
 	    		$itemData->setData('base_price',Mage::helper('pdfpro')->currency($item->getData('base_price'),$baseCurrencyCode));
 	    		$itemData->setData('base_original_price',Mage::helper('pdfpro')->currency($item->getData('base_original_price'),$baseCurrencyCode));

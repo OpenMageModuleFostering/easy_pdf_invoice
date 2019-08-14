@@ -132,6 +132,7 @@
     		</easypdf>
     	</easypdf_processors>
     	<easypdf_communication_method>
+			<!--
     		<soap>
     			<title>SOAP</title>
     			<model>pdfpro/communication_method_soap</model>
@@ -140,6 +141,11 @@
     			<title>XmlRpc</title>
     			<model>pdfpro/communication_method_xmlrpc</model>
     		</xml_rpc>
+			-->
+			<post>
+				<title>POST</title>
+    			<model>pdfpro/communication_method_post</model>
+			</post>
     	</easypdf_communication_method>
     	<events>
 			<ves_pdfpro_data_prepare_after>
@@ -243,8 +249,13 @@
 				<detect_language>1</detect_language>
 				<number_format>2</number_format>
 				<currency_position>8</currency_position>
-				<communication_method>soap</communication_method>
+				<communication_method>post</communication_method>
 			</config>
+			<custom>
+				<custom1>Print Custom 1</custom1>
+				<custom2>Print Custom 2</custom2>
+				<custom3>Print Custom 3</custom3>
+			</custom>
 			<filename_format>
 				<order>order_$ID_$y-$MM-$dd_$HH-$mm-$ss</order>
 				<orders>orders_$y-$MM-$dd_$HH-$mm-$ss</orders>
@@ -255,6 +266,9 @@
 				<creditmemo>creditmemo_$ID_$y-$MM-$dd_$HH-$mm-$ss</creditmemo>
 				<creditmemos>creditmemos_$y-$MM-$dd_$HH-$mm-$ss</creditmemos>
 				<all>docs_$y-$MM-$dd_$HH-$mm-$ss</all>
+				<custom1>custom1_$y-$MM-$dd_$HH-$mm-$ss</custom1>
+				<custom2>custom2_$y-$MM-$dd_$HH-$mm-$ss</custom2>
+				<custom3>custom3_$y-$MM-$dd_$HH-$mm-$ss</custom3>
 			</filename_format>
 			<notification>
 				<notice>1</notice>

@@ -31,6 +31,7 @@ class VES_PdfPro_Block_Adminhtml_Sales_Order_Invoice_View extends Mage_Adminhtml
 	protected function _prepareLayout(){
 		if(!Mage::getStoreConfig('pdfpro/config/enabled')) return;
 		$block = $this->getLayout()->getBlock('sales_invoice_view');
+		if(!$block) return;
 		if(Mage::getStoreConfig('pdfpro/config/remove_default_print')){
 			$block->removeButton('print');
 		}

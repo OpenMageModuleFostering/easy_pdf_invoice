@@ -31,6 +31,7 @@ class VES_PdfPro_Block_Adminhtml_Sales_Order_Creditmemo_View extends Mage_Adminh
 	protected function _prepareLayout(){
 		if(!Mage::getStoreConfig('pdfpro/config/enabled')) return;
 		$block = $this->getLayout()->getBlock('sales_creditmemo_view');
+		if(!$block) return;
 		if(Mage::getStoreConfig('pdfpro/config/remove_default_print')){
 			$block->removeButton('print');
 		}

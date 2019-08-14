@@ -64,6 +64,35 @@ class VES_PdfPro_Adminhtml_Pdfpro_PrintController extends Mage_Adminhtml_Control
 		}
 	}
 	
+	/**
+	 * Print Orders
+	 */
+	public function customAction(){
+		$orderIds = $this->getRequest()->getParam('order_ids');
+		if (empty($orderIds)) {
+			Mage::getSingleton('adminhtml/session')->addError('There is no order to process');
+			$this->_redirect('adminhtml/sales_order');
+			return;
+		}
+		$orderDatas	= array();
+		foreach($orderIds as $orderId){
+			$order = Mage::getModel('sales/order')->load($orderId);
+			if(!$order->getId()){continue;}
+			$orderDatas[] = Mage::getModel('pdfpro/order')->initOrderData($order);
+		}
+		try{
+			$type = $this->getRequest()->getParam('type','order');
+			$result = Mage::helper('pdfpro')->initPdf($orderDatas,$type);
+			if($result['success']){
+				$this->_prepareDownloadResponse(Mage::helper('pdfpro')->getFileName($type).'.pdf', $result['content']);
+			}else{
+				throw new Mage_Core_Exception($result['msg']);
+			}
+		}catch(Exception $e){
+			Mage::getSingleton('core/session')->addError($e->getMessage());
+			$this->_redirect('adminhtml/sales_order/index');
+		}
+	}
     
     /**
      * Print An Invoice

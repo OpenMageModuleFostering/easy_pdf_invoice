@@ -31,7 +31,7 @@ class VES_PdfPro_Block_Adminhtml_Sales_Order_View extends Mage_Adminhtml_Block_T
 	protected function _prepareLayout(){
 		if(!Mage::getStoreConfig('pdfpro/config/enabled') || !Mage::getStoreConfig('pdfpro/config/admin_print_order')) return;
 		$block = $this->getLayout()->getBlock('sales_order_edit');
-		$block->addButton('pdfpro_print', array(
+		if($block) $block->addButton('pdfpro_print', array(
                 'label'     => 'Easy PDF - '.Mage::helper('sales')->__('Print Order'),
                 'class'     => 'save',
                 'onclick'   => 'setLocation(\''.$this->getPrintUrl().'\')'
