@@ -354,4 +354,9 @@ class VES_PdfPro_Adminhtml_Pdfpro_PrintController extends Mage_Adminhtml_Control
         	$this->_redirect('adminhtml/sales_order/index');
         }
 	}
+  
+  protected function _isAllowed()
+  {
+    return true;
+  }
 }
