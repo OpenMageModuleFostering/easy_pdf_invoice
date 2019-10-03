@@ -1,7 +1,7 @@
 {
-    "name": "OpenMageModuleFostering\/Easy_PDF_Invoice",
+    "name": "openmage-module-fostering\/easy_pdf_invoice",
     "type": "magento-module",
-    "license": "OSL-V3.0",
+    "license": "OSL-3.0",
     "homepage": "",
     "description": "PDF generator for magento",
     "authors": [
